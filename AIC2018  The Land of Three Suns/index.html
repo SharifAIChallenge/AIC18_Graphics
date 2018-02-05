@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+<head>
+    <meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no' />
+    <meta charset='utf-8'>
+    <link rel="manifest" href="manifest.json">
+    <style></style>
+    <title>AIC2018 : The Land of Three Suns</title>
+    <script src="playcanvas-stable.min.js"></script>
+    <script>
+        ASSET_PREFIX = "";
+        SCRIPT_PREFIX = "";
+        SCENE_PATH = "583553.json";
+        CONTEXT_OPTIONS = {
+            'antialias': true,
+            'alpha': false,
+            'preserveDrawingBuffer': false,
+            'preferWebGl2': true
+        };
+        SCRIPTS = [ 10601749, 10656946, 10710434, 10765317, 10769425, 10848168, 10921203, 10848177, 10849400, 10859904, 10873011, 10915806, 10635897, 10916317, 10919089, 10916784, 10873274, 10929959, 10934265, 10937718, 10958743, 10975148, 10976542, 10978774, 10979792, 10979846, 10979970, 10980047 ];
+        CONFIG_FILENAME = "config.json";
+        pc.script.legacy = false;
+    </script>
+    <script>
+        window.addEventListener('test', function(event) {
+            console.log('test message');
+        }, false);
+
+        function loadjscssfile(filename, filetype) {
+            if (filetype == "js") { //if filename is a external JavaScript file
+                var fileref = document.createElement('script')
+                fileref.setAttribute("type", "text/javascript")
+                fileref.setAttribute("src", filename)
+            }
+            else if (filetype == "css") { //if filename is an external CSS file
+                var fileref = document.createElement("link")
+                fileref.setAttribute("rel", "stylesheet")
+                fileref.setAttribute("type", "text/css")
+                fileref.setAttribute("href", filename)
+            }
+            if (typeof fileref != "undefined")
+                document.getElementsByTagName("body")[0].appendChild(fileref)
+        }
+        var content = window;
+        var openFile = function (event) {
+            var input = event.target;
+            var content = window.window;
+            var reader = new FileReader();
+            reader.onload = function () {
+                log = reader.result;
+                document.getElementById('storage').innerHTML = log;
+                loadjscssfile('styles.css', 'css');
+                loadjscssfile('clear.js', 'js');
+                loadjscssfile('__start__.js', 'js');
+                loadjscssfile('__loading__.js', 'js');
+            };
+            reader.readAsText(input.files[0]);
+        };
+    </script>
+</head>
+<body>
+    <input id='input' type='file' accept='text/plain' onchange='openFile(event)'><br>
+    <p id="storage" style="display: none;"></p>
+</body>
+</html>
