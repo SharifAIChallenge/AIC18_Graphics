@@ -1,12 +1,18 @@
 <!doctype html>
 <html>
+
 <head>
     <meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no' />
     <meta charset='utf-8'>
     <link rel="manifest" href="manifest.json">
-    <style></style>
     <title>AIC2018 : The Land of Three Suns</title>
     <script src="playcanvas-stable.min.js"></script>
+    <link rel="stylesheet" href="/static/semantic/semantic.rtl.min.css">
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <script src="/static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/semantic/semantic.min.js"></script>
+    <script src="/static/js/scripts.js"></script>
+
     <script>
         ASSET_PREFIX = "";
         SCRIPT_PREFIX = "";
@@ -17,12 +23,12 @@
             'preserveDrawingBuffer': false,
             'preferWebGl2': true
         };
-        SCRIPTS = [ 10601749, 10656946, 10710434, 10765317, 10769425, 10848168, 10921203, 10848177, 10849400, 10859904, 10873011, 10915806, 10635897, 10916317, 10919089, 10916784, 10873274, 10929959, 10934265, 10937718, 10958743, 10975148, 10976542, 10978774, 10979792, 10979846, 10979970, 10980047 ];
+        SCRIPTS = [10601749, 10656946, 10710434, 10765317, 10769425, 10848168, 10921203, 10848177, 10849400, 10859904, 10873011, 10915806, 10635897, 10916317, 10919089, 10916784, 10873274, 10929959, 10934265, 10937718, 10958743, 10975148, 10976542, 10978774, 10979792, 10979846, 10979970, 10980047];
         CONFIG_FILENAME = "config.json";
         pc.script.legacy = false;
     </script>
     <script>
-        window.addEventListener('test', function(event) {
+        window.addEventListener('test', function (event) {
             console.log('test message');
         }, false);
 
@@ -58,8 +64,12 @@
         };
     </script>
 </head>
+
 <body>
-    <input id='input' type='file' accept='text/plain' onchange='openFile(event)'><br>
+    <div id="input" style="position: absolute; height: 100vh; width: 100vw; top: 0; left: 0; background-color: #283538;">
+        <input type='file' accept='text/plain' onchange='openFile(event)'><br>
+    </div>
     <p id="storage" style="display: none;"></p>
 </body>
+
 </html>
