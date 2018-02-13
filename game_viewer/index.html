@@ -77,7 +77,7 @@
         }
 
         var log_url = getParameterByName('log_url');
-        if (log_url === undefined) {
+        if (log_url !== undefined) {
             $('#storage').innerHTML = $.ajax({
                 type: "GET",
                 url: `http://aichallenge.sharif.edu:2016/media/logs/${log_url}`,
