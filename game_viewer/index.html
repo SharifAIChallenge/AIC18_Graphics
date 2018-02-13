@@ -266,18 +266,22 @@
         }
 
         var log_url = getParameterByName('log_url');
-        if (log_url !== undefined) {
-            $('#storage').innerHTML = $.ajax({
+        if (log_url != null) {
+            $.ajax({
                 type: "GET",
                 url: `http://aichallenge.sharif.edu:2016/media/logs/${log_url}`,
-                async: false
-            }).responseText;
-
-            loadjscssfile('styles.css', 'css');
-            loadjscssfile('clear.js', 'js');
-            loadjscssfile('__start__.js', 'js');
-            loadjscssfile('__loading__.js', 'js');
-            document.getElementsByTagName("body")[0].setAttribute('dir', 'ltr');
+                success: function (result) {
+                    document.getElementById('storage').innerHTML = result;
+                    console.log(result);
+                    loadjscssfile('styles.css', 'css');
+                    loadjscssfile('clear.js', 'js');
+                    loadjscssfile('__start__.js', 'js');
+                    loadjscssfile('__loading__.js', 'js');
+                    document.getElementsByTagName("body")[0].setAttribute('dir', 'ltr');
+                }
+            });
+            $('h3').text("در حال دانلود گزارش بازی ...");
+            $('input').hide();
         }
 </script>
 
