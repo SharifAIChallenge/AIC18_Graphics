@@ -269,7 +269,7 @@
         if (log_url != null) {
             $.ajax({
                 type: "GET",
-                url: `http://aichallenge.sharif.edu:2016/media/${log_url}`,
+                url: `/media/${log_url}`,
                 success: function (result) {
                     document.getElementById('storage').innerHTML = result;
                     console.log(result);
