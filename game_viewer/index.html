@@ -65,32 +65,6 @@
             };
             reader.readAsText(input.files[0]);
         };
-
-        function getParameterByName(name, url) {
-            if (!url) url = window.location.href;
-            name = name.replace(/[\[\]]/g, "\\$&");
-            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-                results = regex.exec(url);
-            if (!results) return null;
-            if (!results[2]) return '';
-            return decodeURIComponent(results[2].replace(/\+/g, " "));
-        }
-
-        var log_url = getParameterByName('log_url');
-        if (log_url !== undefined) {
-            $('#storage').innerHTML = $.ajax({
-                type: "GET",
-                url: `http://aichallenge.sharif.edu:2016/media/logs/${log_url}`,
-                async: false
-            }).responseText;
-
-            loadjscssfile('styles.css', 'css');
-            loadjscssfile('clear.js', 'js');
-            loadjscssfile('__start__.js', 'js');
-            loadjscssfile('__loading__.js', 'js');
-            document.getElementsByTagName("body")[0].setAttribute('dir', 'ltr');
-        }
-
     </script>
 </head>
 
@@ -280,5 +254,31 @@
 </div>
 <p id="storage" style="display: none;"></p>
 </body>
+<script>
+    function getParameterByName(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, "\\$&");
+            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, " "));
+        }
+
+        var log_url = getParameterByName('log_url');
+        if (log_url !== undefined) {
+            $('#storage').innerHTML = $.ajax({
+                type: "GET",
+                url: `http://aichallenge.sharif.edu:2016/media/logs/${log_url}`,
+                async: false
+            }).responseText;
+
+            loadjscssfile('styles.css', 'css');
+            loadjscssfile('clear.js', 'js');
+            loadjscssfile('__start__.js', 'js');
+            loadjscssfile('__loading__.js', 'js');
+            document.getElementsByTagName("body")[0].setAttribute('dir', 'ltr');
+        }
+</script>
 
 </html>
