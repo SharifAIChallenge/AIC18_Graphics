@@ -1,0 +1,17 @@
+
+.logo-panel {
+    position: absolute;
+    top: 90%;
+    left: 20%;
+    right : 20%;
+    
+    width: 60%;
+    height: 10%;
+    
+    background-color: #FFFFFF;
+
+}
+
+.pic {
+    margin-left : 10px;
+}
