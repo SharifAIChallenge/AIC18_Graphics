@@ -32,6 +32,7 @@
         window.addEventListener('test', function (event) {
             console.log('test message');
         }, false);
+
         function loadjscssfile(filename, filetype) {
             if (filetype == "js") { //if filename is a external JavaScript file
                 var fileref = document.createElement('script')
@@ -47,6 +48,7 @@
             if (typeof fileref != "undefined")
                 document.getElementsByTagName("body")[0].appendChild(fileref)
         }
+
         var content = window;
         var openFile = function (event) {
             var input = event.target;
@@ -68,7 +70,28 @@
 
 <body dir="rtl">
 <div id="input">
-    <div class="ui right sidebar inverted vertical menu">
+
+    <div class="ui right sidebar inverted vertical menu" style="">
+
+
+        <div class="item">
+            <div class="title">
+                <span class="text">خانه</span>
+            </div>
+            <div class="content menu">
+
+                <a href="/#section-intro" class="item">معرفی</a>
+
+                <a href="/#section-prizes" class="item">جایزه</a>
+
+                <a href="/#section-history" class="item">تاریخ</a>
+
+                <a href="/#section-schedule" class="item">برنامه</a>
+
+                <a href="/#section-organizer" class="item">تماس با ما</a>
+
+            </div>
+        </div>
 
 
         <div class="item">
@@ -87,27 +110,15 @@
 
         <div class="item">
             <div class="title">
-                <span class="text">حساب کاربری</span>
-            </div>
-            <div class="content menu">
-
-                <a href="/accounts/logout/" class="item">خروج</a>
-
-            </div>
-        </div>
-
-
-        <div class="item">
-            <div class="title">
                 <span class="text">بازی</span>
             </div>
             <div class="content menu">
 
-                <a href="/static/game_graphics/map_maker/index.html" class="item">نقشه ساز</a>
-
-                <a href="/static/game_graphics/game_viewer/index.html" class="item">نمایشگر بازی</a>
-
                 <a href="/accounts/panel/" class="item">پنل</a>
+
+                <a href="/game/game_viewer" class="item">نمایشگر بازی</a>
+
+                <a href="/game/map_maker" class="item">نقشه ساز</a>
 
             </div>
         </div>
@@ -115,23 +126,14 @@
 
         <div class="item">
             <div class="title">
-                <span class="text">خانه</span>
+                <span class="text">حساب کاربری</span>
             </div>
             <div class="content menu">
 
-                <a href="/#section-prizes" class="item">جایزه</a>
-
-                <a href="/#section-intro" class="item">معرفی</a>
-
-                <a href="/#section-history" class="item">تاریخ</a>
-
-                <a href="/#section-organizer" class="item">تماس با ما</a>
-
-                <a href="/#section-schedule" class="item">برنامه</a>
+                <a href="/accounts/panel/" class="item">پنل کاربری</a>
 
             </div>
         </div>
-
 
     </div>
 
@@ -146,24 +148,39 @@
             <div class="ui attached inverted sticky borderless menu navbar-color" id="navbar">
 
 
-                <div class="ui dropdown link item">
+                <div class="ui dropdown link item" tabindex="0">
                     <span class="text">خانه</span>
                     <i class="dropdown icon"></i>
-                    <div class="menu">
+                    <div class="menu" tabindex="-1">
+
+                        <a href="/" class="item">صفحه&zwnj;ی اصلی</a>
 
                         <a href="/#section-intro" class="item">معرفی</a>
 
+                        <a href="/#section-prizes" class="item">جایزه</a>
+
                         <a href="/#section-history" class="item">تاریخ</a>
+
+                        <a href="/#section-schedule" class="item">برنامه</a>
 
                         <a href="/faq" class="item">سوالات متداول</a>
 
-                        <a href="/blog" class="item">وبلاگ و پرسش و پاسخ</a>
-
-                        <a href="/#section-prizes" class="item">جایزه</a>
-
                         <a href="/#section-organizer" class="item">تماس با ما</a>
 
-                        <a href="/#section-schedule" class="item">برنامه</a>
+                    </div>
+                </div>
+
+
+                <div class="ui dropdown link item" tabindex="0">
+                    <span class="text">دسترسی</span>
+                    <i class="dropdown icon"></i>
+                    <div class="menu" tabindex="-1">
+
+                        <a href="/accounts/panel/" class="item">پنل</a>
+
+                        <a href="https://aichallenge.sharif.edu/blog/2018/02/05/Server-Client-MapMaker/" class="item">منابع</a>
+
+                        <a href="/blog" class="item">وبلاگ و پرسش و پاسخ</a>
 
                     </div>
                 </div>
@@ -181,15 +198,10 @@
                         <i class="user icon large-icon"></i>
                         <div class="ui inverted menu" style="margin-right: -60px;">
 
-                            <a class="item" href="/accounts/login/">
+                            <a class="item" href="/accounts/panel/">
                                 <i class="sign in icon"></i>
-                                ورود
+                                پنل کاربری
                             </a>
-                            <a class="item" href="/accounts/signup/">
-                                <i class="add user icon"></i>
-                                ثبت نام
-                            </a>
-
                         </div>
                     </div>
                     <a class="fitted item popup-link" href="/blog" data-tooltip="وبلاگ و پرسش و پاسخ"
@@ -204,7 +216,6 @@
 
                 </div>
             </div>
-
 
             <div class="ui container">
 
@@ -254,32 +265,33 @@
 </body>
 <script>
     function getParameterByName(name, url) {
-            if (!url) url = window.location.href;
-            name = name.replace(/[\[\]]/g, "\\$&");
-            var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-                results = regex.exec(url);
-            if (!results) return null;
-            if (!results[2]) return '';
-            return decodeURIComponent(results[2].replace(/\+/g, " "));
-        }
-        var log_url = getParameterByName('log_url');
-        if (log_url != null) {
-            $.ajax({
-                type: "GET",
-                url: `/media/${log_url}`,
-                success: function (result) {
-                    document.getElementById('storage').innerHTML = result;
-                    console.log(result);
-                    loadjscssfile('styles.css', 'css');
-                    loadjscssfile('clear.js', 'js');
-                    loadjscssfile('__start__.js', 'js');
-                    loadjscssfile('__loading__.js', 'js');
-                    document.getElementsByTagName("body")[0].setAttribute('dir', 'ltr');
-                }
-            });
-            $('h3').text("در حال دانلود گزارش بازی ...");
-            $('input').hide();
-        }
+        if (!url) url = window.location.href;
+        name = name.replace(/[\[\]]/g, "\\$&");
+        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, " "));
+    }
+
+    var log_url = getParameterByName('log_url');
+    if (log_url != null) {
+        $.ajax({
+            type: "GET",
+            url: `/media/${log_url}`,
+            success: function (result) {
+                document.getElementById('storage').innerHTML = result;
+                console.log(result);
+                loadjscssfile('styles.css', 'css');
+                loadjscssfile('clear.js', 'js');
+                loadjscssfile('__start__.js', 'js');
+                loadjscssfile('__loading__.js', 'js');
+                document.getElementsByTagName("body")[0].setAttribute('dir', 'ltr');
+            }
+        });
+        $('h3').text("در حال دانلود گزارش بازی ...");
+        $('input').hide();
+    }
 </script>
 
 </html>
