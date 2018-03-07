@@ -1,17 +1,29 @@
-
 .logo-panel {
     position: absolute;
-    top: 90%;
-    left: 20%;
-    right : 20%;
-    
-    width: 60%;
-    height: 10%;
-    
-    background-color: #FFFFFF;
-
+    width: 100vw;
+    top: 94vh;
+    display: inline;
 }
 
-.pic {
-    margin-left : 10px;
+.right_text {
+    text-align: center;
+    margin-left: 3.9%;
+    width: 48%;
+    float: left;
+    font-weight: 800;
+}
+
+.left_text {
+    text-align: center;
+    margin-left: 51.9%;
+    width: 48%;
+    font-weight: 800;
+}
+
+.name-wrapper {
+    background-color: white;
+    min-width: 20%;
+    max-width: 30%;
+    border-radius: 10px;
+    margin-left: 5px;
 }
