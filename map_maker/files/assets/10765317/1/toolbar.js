@@ -107,13 +107,15 @@ Toolbar.prototype.bindEvents = function(){
         for(var i = 0; i < models.length; i++) {
             models[i].enabled = false;
         }
-        var newPath = new pc.Entity();
-        newPath.name = 'New Path';
-        if(app.root.findByName('path').enabled === false) {
-            app.root.addChild(newPath);
-        }
         app.root.findByName('path').enabled = true;
         app.root.findByName('done').enabled = true;
+        
+        if(app.root.findByName('New Path') === null || app.root.findByName('New Path') === undefined){
+            var newPath = new pc.Entity();
+            newPath.name = 'New Path';
+            app.root.addChild(newPath);
+        }
+        
         document.body.style.cursor = 'default';
         camera.script.mouseInput.runable = false;
     }, false);
