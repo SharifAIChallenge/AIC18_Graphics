@@ -84,21 +84,12 @@ MakeGround.prototype.setFirstGround = function() {
     }
 };
 
-MakeGround.prototype.setGround = function(index,x,y) {
+MakeGround.prototype.setGround = function(model,index,x,y) {
     String.prototype.replaceAt=function(index, replacement) {
         return this.substr(0, index) + replacement+ this.substr(index + replacement.length);
     };
     
     var groundHolder = this.app.root.findByName('Ground Holder');
-    
-    var i,model,models = this.app.root.findByName('model holder').children;
-    for(i = 0;i < models.length;i++){
-        if(models[i].enabled === true){
-            model = models[i];
-            break;
-        }
-    }
-    
     
     switch(model.name){
         case 'dirt':
@@ -215,7 +206,7 @@ MakeGround.prototype.onMouseUp = function(event) {
         j = j - j % 1;
         var index = i * this.map + j;
         if(i >= 0 && j >= 0 && i < this.map && j < this.map) {
-            this.setGround(index,i,j);
+            this.setGround(earth,index,i,j);
         }
     }
 };
