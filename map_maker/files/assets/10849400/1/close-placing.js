@@ -40,8 +40,7 @@ ClosePlacing.prototype.onPress = function(event){
     this.app.root.findByName('done').enabled = false;
     var newPath = this.app.root.findByName('New Path');
     if(newPath !== null && newPath !== undefined){
-        newPath.enabled = false;
-        this.app.root.removeChild(newPath);
+        newPath.destroy();
     }   
     
     var camera = this.app.root.findByName('Main Camera');
