@@ -27,7 +27,7 @@ AddPath.prototype.onMouseUp = function() {
         if(pathes.children[i].children.length == newPath.children.length){
             var check = true;
             for(var j = 0;j < newPath.children.length;j++){
-                if(newPath.children[j].getPosition().x != pathes.children[i].children[j].getPosition().x && newPath.children[j].getPosition().z != pathes.children[i].children[j].getPosition().z)
+                if(newPath.children[j].getPosition().x != pathes.children[i].children[j].getPosition().x || newPath.children[j].getPosition().z != pathes.children[i].children[j].getPosition().z)
                 {
                     check = false;
                     break;
@@ -41,22 +41,14 @@ AddPath.prototype.onMouseUp = function() {
     }
     
     
-    this.app.root.removeChild(newPath);
     if(isEqual === false){
-        pathes.addChild(newPath);
-        
-//         var string = '';
-    
-//         for(i =0;i<newPath.children.length;i++){
-//             var pos = newPath.children[i].getPosition();
-//             string +=  pos.x+'--'+pos.z+'\n';
-//         }
-
-//         alert(string);
+        newPath.reparent(pathes);
+        newPath.name = 'Done Path';
+        newPath.enabled = false;
     }
-
-    newPath.name = 'Done Path';
-    newPath.enabled = false;
+    else
+        newPath.destroy();
+    
     this.app.root.findByName('path').enabled = false;
     this.app.root.findByName('done').enabled = false;
 };
