@@ -48,6 +48,14 @@ Toolbar.prototype.bindEvents = function(){
         app.root.findByName('grass').enabled = true;
         document.body.style.cursor = 'default';
         camera.script.mouseInput.runable = false;
+        
+        
+        app.root.findByName('done').enabled = false;
+        var newPath = app.root.findByName('New Path');
+        if(newPath !== null && newPath !== undefined){
+            newPath.destroy();
+        } 
+        
     }, false);
     
     earth.addEventListener('click',function(){
@@ -59,6 +67,12 @@ Toolbar.prototype.bindEvents = function(){
         document.body.style.cursor = 'default';
         camera.script.mouseInput.runable = false;
         
+        app.root.findByName('done').enabled = false;
+        var newPath = app.root.findByName('New Path');
+        if(newPath !== null && newPath !== undefined){
+            newPath.destroy();
+        } 
+        
     }, false);
     
     tree.addEventListener('click', function() {
@@ -69,6 +83,12 @@ Toolbar.prototype.bindEvents = function(){
         app.root.findByName('tree').enabled = true;
         document.body.style.cursor = 'default';
         camera.script.mouseInput.runable = false;
+        
+        app.root.findByName('done').enabled = false;
+        var newPath = app.root.findByName('New Path');
+        if(newPath !== null && newPath !== undefined){
+            newPath.destroy();
+        } 
 
     }, false);
     
@@ -92,6 +112,12 @@ Toolbar.prototype.bindEvents = function(){
         document.body.style.cursor = 'default';
         camera.script.mouseInput.runable = false;
         
+        app.root.findByName('done').enabled = false;
+        var newPath = app.root.findByName('New Path');
+        if(newPath !== null && newPath !== undefined){
+            newPath.destroy();
+        } 
+        
      }, false);
     
     eraser.addEventListener('click',function(){
@@ -101,6 +127,14 @@ Toolbar.prototype.bindEvents = function(){
         document.body.style.cursor = 'no-drop';
         app.root.findByName('eraser').enabled = true;
         camera.script.mouseInput.runable = false;
+        
+        
+        app.root.findByName('done').enabled = false;
+        var newPath = app.root.findByName('New Path');
+        if(newPath !== null && newPath !== undefined){
+            newPath.destroy();
+        } 
+        
     },false);
     
     path.addEventListener('click', function() {
